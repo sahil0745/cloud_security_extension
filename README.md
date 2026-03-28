@@ -1,14 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+🌐 CloudGuard – Cloud Misconfiguration Security Extension
 
-This contains everything you need to run your app locally.
+CloudGuard is a prevention-first, real-time cloud security solution designed to detect and mitigate misconfiguration risks across multi-cloud environments such as AWS, Microsoft Azure, and Google Cloud Platform.
 
-View your app in AI Studio: https://ai.studio/apps/5c2418de-2c8a-4d8d-9a04-3dd2f49fd302
+In modern cloud systems, the majority of security breaches occur due to misconfigurations rather than sophisticated attacks. CloudGuard addresses this critical challenge by providing a continuous monitoring and auto-healing security framework that operates directly within the user’s workflow.
 
-## Run Locally
+🚀 Key Features
+🔍 Automatic Activation
+Seamlessly activates when users access cloud platforms (AWS, Azure, GCP)
+🛡️ Safe Configuration Baseline
+Captures and maintains a secure reference state to detect configuration drift
+⚡ Real-Time Monitoring
+Continuously tracks configuration changes and user activities
+🧠 Hybrid Detection Engine
+Combines:
+Rule-based detection (CIS Benchmarks)
+Machine Learning (Random Forest)
+User Behavior Analysis
+📊 Risk Scoring System (1–100)
+Prioritizes vulnerabilities based on severity and impact
+🚨 Real-Time Alerts
+Instant notifications for risky configurations and suspicious activities
+🔄 Auto-Remediation & Rollback
+Automatically fixes issues or restores the system to a secure baseline
+👨‍💼 Admin Governance Control
+Requires approval for critical actions to ensure secure operations
+📈 Interactive Dashboard & Reports
+Visualizes threats, trends, and generates CSV/PDF reports for auditing
+🧠 Core Idea
+
+CloudGuard transforms cloud security from:
+
+❌ Reactive Detection (after damage)
+➡️ Proactive Prevention & Auto-Healing Security
+
+🛠️ Tech Stack
+Frontend (Extension): JavaScript, HTML, CSS (Chrome Extension – Manifest V3)
+Dashboard: React.js, Tailwind CSS
+Backend: Python, FastAPI
+Machine Learning: Scikit-learn (Random Forest)
+Database: MongoDB / PostgreSQL
+Cloud APIs: AWS (Boto3), Azure, GCP
+🎯 Use Cases
+Enterprises managing multi-cloud environments
+DevOps and cloud security teams
+Startups using cloud-native infrastructure
+Government and public sector cloud systems
 
 **Prerequisites:**  Node.js
 
