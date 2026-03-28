@@ -1,0 +1,11 @@
+{
+  "rules": 0.30,
+  "ml": 0.30,
+  "behavior": 0.20,
+  "asset": 0.20,
+  "advanced": {
+    "repeated_alert_penalty": 1.15,
+    "multi_factor_multiplier": 1.25,
+    "adaptive_threshold_factor": 1.0
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Cloud Misconfiguration Security Extension",
+  "version": "1.0.0",
+  "description": "Advanced ML-powered cloud security posture management and misconfiguration detection.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "alarms",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "http://127.0.0.1:8000/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "CloudSec Copilot"
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.aws.amazon.com/*",
+        "*://aws.amazon.com/*",
+        "*://*.azure.microsoft.com/*",
+        "*://azure.microsoft.com/*",
+        "*://*.azure.com/*",
+        "*://portal.azure.com/*",
+        "*://*.cloud.google.com/*",
+        "*://cloud.google.com/*"
+      ],
+      "js": ["content/content.js"]
+    }
+  ]
+}

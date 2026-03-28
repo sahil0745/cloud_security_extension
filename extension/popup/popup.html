@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudSec Copilot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="dark-theme">
+  <!-- Animated Cyber Background -->
+  <div class="cyber-background"></div>
+  
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <div class="logo-glow"></div>
+        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <h1>CloudSec</h1>
+      <button id="themeToggle" class="icon-btn" title="Toggle Theme" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div id="warningBanner" class="warning-banner hidden" role="status" aria-live="polite"></div>
+
+      <!-- Platform Badge (Hidden by default) -->
+      <div id="platformBadge" class="platform-badge glass-panel hidden">
+        <div class="platform-icon-container">
+          <img id="platformIcon" src="" alt="Cloud Platform" class="platform-icon" onerror="this.style.display='none'">
+        </div>
+        <div class="platform-info">
+          <span class="platform-label">Connected to</span>
+          <h3 id="platformName">Unknown Platform</h3>
+        </div>
+        <div class="status-indicator safe" id="platformIndicator">
+          <span class="pulse"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <!-- Premium Auto-Remediation Toggle -->
+      <div class="premium-toggle-container glass-panel" style="display:flex; justify-content:space-between; align-items:center; padding:12px 16px; margin-bottom:16px; border-left:3px solid var(--safe-color);">
+        <div class="toggle-label" style="font-size:12px; font-weight:700; color:var(--safe-color); display:flex; align-items:center; gap:8px;">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+           Auto-Remediate
+        </div>
+        <div class="toggle-switch" style="position:relative; width:40px; height:20px; background:var(--safe-color); border-radius:10px; cursor:pointer;" onclick="const isActive = this.style.background === 'var(--safe-color)'; this.style.background = isActive ? 'rgb(51, 65, 85)' : 'var(--safe-color)'; this.children[0].style.left = isActive ? '2px' : '22px';">
+          <div style="position:absolute; top:2px; left:22px; width:16px; height:16px; background:#fff; border-radius:50%; transition:left 0.2s;"></div>
+        </div>
+      </div>
+
+      <!-- Security Status Card -->
+      <div class="status-card glass-panel">
+        <div class="status-header">
+          <span class="status-label">System Status</span>
+          <div class="status-indicator safe" id="statusIndicator">
+            <span class="pulse"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        
+        <!-- Progress Bar Section -->
+        <div id="progressSection" class="progress-section hidden">
+          <div class="progress-text-container">
+            <span id="progressStatusText">Connecting...</span>
+            <span id="progressPercentage">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBar">
+              <div class="progress-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score Display Section -->
+        <div id="scoreSection" class="score-display">
+          <svg class="circular-chart" viewBox="0 0 36 36">
+            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="circle safe" id="scoreCircle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <text x="18" y="20.5" class="percentage" id="scoreText">0</text>
+          </svg>
+          <div class="score-details">
+            <h2 id="statusText" class="safe">Safe</h2>
+            <p>Risk Score</p>
+          </div>
+        </div>
+
+        <!-- ML Insights Section -->
+        <div id="mlSection" class="ml-section hidden glass-panel" style="margin-top: 10px; padding: 10px; border-radius: 8px; border-left: 3px solid #10b981;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: bold; color: #10b981; display: flex; align-items: center; gap: 4px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              AI Verified
+            </span>
+            <span id="mlPredictionBadge" style="font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(16, 185, 129, 0.2); color: #10b981;">SAFE</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">
+            <span>Confidence</span>
+            <span id="mlConfidence">0%</span>
+          </div>
+          <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 8px;">
+            <div id="mlConfidenceBar" style="height: 100%; width: 0%; background: #10b981; border-radius: 2px; transition: width 0.5s ease;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8;">
+            <span>Anomaly Score</span>
+            <span id="mlAnomaly">0.00</span>
+          </div>
+          <div id="mlExplanationContainer" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 10px; color: #64748b; line-height: 1.4;">
+            <span id="mlExplanation"></span>
+          </div>
+        </div>
+
+        <!-- Behavior Insights Section -->
+        <div id="behaviorSection" class="ml-section hidden glass-panel" style="margin-top: 10px; padding: 10px; border-radius: 8px; border-left: 3px solid #8b5cf6;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 12px; font-weight: bold; color: #8b5cf6; display: flex; align-items: center; gap: 4px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              User Behavior
+            </span>
+            <span id="behaviorBadge" style="font-size: 10px; padding: 2px 6px; border-radius: 4px; background: rgba(139, 92, 246, 0.2); color: #8b5cf6;">NORMAL</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">
+            <span>Anomaly Score</span>
+            <span id="behaviorScore">0/100</span>
+          </div>
+          <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 8px;">
+            <div id="behaviorScoreBar" style="height: 100%; width: 0%; background: #8b5cf6; border-radius: 2px; transition: width 0.5s ease;"></div>
+          </div>
+          <div id="behaviorInsightsContainer" style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 10px; color: #64748b; line-height: 1.4;">
+            <ul id="behaviorInsightsList" style="padding-left: 12px; margin: 0; margin-bottom: 8px;"></ul>
+            
+            <div style="font-weight: bold; color: #cbd5e1; margin-bottom: 4px;">Activity Timeline</div>
+            <div id="behaviorTimeline" style="background: rgba(0,0,0,0.2); border-radius: 4px; padding: 6px; margin-bottom: 8px; max-height: 60px; overflow-y: auto;">
+              <!-- Timeline items -->
+            </div>
+
+            <div style="font-weight: bold; color: #cbd5e1; margin-bottom: 4px;">Risk Evolution</div>
+            <div style="display: flex; align-items: flex-end; height: 30px; gap: 2px; margin-bottom: 8px;" id="riskEvolutionGraph">
+              <!-- Graph bars -->
+            </div>
+            
+            <div style="font-weight: bold; color: #cbd5e1; margin-bottom: 4px;">Activity Heatmap (24h)</div>
+            <div style="display: flex; gap: 1px; height: 10px;" id="behaviorHeatmap">
+              <!-- Heatmap cells -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Baseline & Drift Info (Step 3) -->
+        <div id="baselineSection" class="baseline-section hidden">
+          <div class="baseline-row">
+            <span class="baseline-label">Baseline:</span>
+            <span id="baselineStatus" class="baseline-value">None</span>
+          </div>
+          <div class="baseline-row">
+            <span class="baseline-label">Last Scan:</span>
+            <span id="lastScanTime" class="baseline-value">--:--</span>
+          </div>
+          
+          <!-- Drift Details List -->
+          <div id="driftContainer" class="drift-container hidden">
+            <span class="drift-title">Changes Detected:</span>
+            <ul id="driftList" class="drift-list">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+
+          <!-- Violations List -->
+          <div id="violationsContainer" class="violations-container hidden">
+            <span class="violations-title">Security Violations:</span>
+            <ul id="violationsList" class="violations-list">
+              <!-- Populated dynamically -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Section -->
+      <div class="action-section">
+        <button id="monitorBtn" class="primary-btn" aria-label="Start or stop monitoring">
+          <span class="btn-text">Start Monitoring</span>
+          <div class="spinner hidden" id="btnSpinner"></div>
+        </button>
+      </div>
+    </main>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    
+    <!-- Footer -->
+    <footer>
+      <span class="version">v1.2.0</span>
+      <span class="env-badge">Auto-Detect Active</span>
+    </footer>
+  </div>
+
+  <!-- Audio Element for Sound Feedback -->
+  <audio id="detectSound" src="../assets/sounds/detect.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script src="../utils/helpers.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

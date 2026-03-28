@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+	--font-body: "Manrope", "Segoe UI", sans-serif;
+	--font-display: "Space Grotesk", "Trebuchet MS", sans-serif;
+	--ui-bg: #04070d;
+	--ui-bg-soft: #09131f;
+	--ui-panel: rgba(10, 22, 38, 0.62);
+	--ui-panel-border: rgba(148, 163, 184, 0.2);
+	--ui-text: #e6edf5;
+	--ui-text-muted: #8ea0b7;
+	--ui-primary: #38bdf8;
+	--ui-primary-strong: #0ea5e9;
+	--ui-primary-soft: rgba(56, 189, 248, 0.16);
+	--ui-primary-border: rgba(56, 189, 248, 0.38);
+	--ui-primary-text: #7dd3fc;
+	--ui-primary-shadow: rgba(56, 189, 248, 0.62);
+	--ui-secondary-soft: rgba(20, 184, 166, 0.16);
+	--ui-hover: rgba(255, 255, 255, 0.05);
+	--ui-safe: #22c55e;
+	--ui-danger: #f43f5e;
+	--ui-warning: #fb923c;
+	--ui-ring: rgba(56, 189, 248, 0.35);
+	--ui-sidebar-bg: rgba(7, 16, 29, 0.92);
+	--ui-header-bg: rgba(5, 9, 19, 0.8);
+	--radius-md: 12px;
+	--radius-lg: 18px;
+	--radius-xl: 24px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-6: 24px;
+}
+
+[data-theme="day"] {
+	--ui-bg: #f4f8fd;
+	--ui-bg-soft: #e9f1fb;
+	--ui-panel: rgba(255, 255, 255, 0.88);
+	--ui-panel-border: rgba(59, 130, 246, 0.22);
+	--ui-text: #0f172a;
+	--ui-text-muted: #4b5563;
+	--ui-primary: #2563eb;
+	--ui-primary-strong: #1d4ed8;
+	--ui-primary-soft: rgba(37, 99, 235, 0.14);
+	--ui-primary-border: rgba(37, 99, 235, 0.38);
+	--ui-primary-text: #1d4ed8;
+	--ui-primary-shadow: rgba(29, 78, 216, 0.45);
+	--ui-secondary-soft: rgba(20, 184, 166, 0.14);
+	--ui-hover: rgba(30, 41, 59, 0.06);
+	--ui-ring: rgba(37, 99, 235, 0.35);
+	--ui-sidebar-bg: rgba(250, 252, 255, 0.86);
+	--ui-header-bg: rgba(244, 248, 253, 0.88);
+}
+
+html, body, #root {
+	min-height: 100%;
+}
+
+body {
+	font-family: var(--font-body);
+	background:
+		radial-gradient(70% 120% at 0% 0%, var(--ui-primary-soft) 0%, transparent 55%),
+		radial-gradient(60% 90% at 95% 5%, var(--ui-secondary-soft) 0%, transparent 60%),
+		linear-gradient(180deg, var(--ui-bg-soft) 0%, var(--ui-bg) 100%);
+	color: var(--ui-text);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	transition: background 480ms ease, color 300ms ease;
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+
+*:focus-visible {
+	outline: 2px solid var(--ui-ring);
+	outline-offset: 2px;
+	border-radius: 10px;
+}
+
+.ds-card {
+	background: var(--ui-panel);
+	border: 1px solid var(--ui-panel-border);
+	border-radius: var(--radius-lg);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	box-shadow: 0 12px 36px rgba(3, 8, 18, 0.35);
+	transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.ds-card:hover {
+	transform: translateY(-2px);
+	border-color: rgba(56, 189, 248, 0.35);
+	box-shadow: 0 18px 42px rgba(3, 8, 18, 0.45), 0 0 0 1px rgba(56, 189, 248, 0.1) inset;
+}
+
+.ds-button {
+	position: relative;
+	overflow: hidden;
+	border-radius: 12px;
+	transition: transform 180ms ease, box-shadow 220ms ease, background-color 220ms ease;
+	will-change: transform;
+}
+
+.ds-button:hover {
+	box-shadow: 0 0 0 1px var(--ui-primary-border) inset, 0 8px 18px var(--ui-primary-soft);
+	transform: translateY(-1px);
+}
+
+.ds-button:active {
+	transform: scale(0.98);
+}
+
+.ds-input {
+	transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+	background: color-mix(in srgb, var(--ui-bg-soft) 70%, transparent);
+	border: 1px solid var(--ui-panel-border);
+	color: var(--ui-text);
+}
+
+.ds-input:focus {
+	border-color: var(--ui-primary-border);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--ui-primary) 25%, transparent);
+	outline: none;
+}
+
+.app-shell {
+	background: transparent;
+	color: var(--ui-text);
+	font-family: var(--font-body);
+}
+
+.app-shell-login {
+	isolation: isolate;
+}
+
+.app-sidebar {
+	background: var(--ui-sidebar-bg);
+	border-color: var(--ui-panel-border);
+}
+
+.app-header {
+	background: var(--ui-header-bg);
+	border-color: var(--ui-panel-border);
+}
+
+.title-gradient {
+	font-family: var(--font-display);
+	background: linear-gradient(120deg, var(--ui-text) 0%, var(--ui-primary-text) 70%, var(--ui-primary) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.aurora-field {
+	background:
+		radial-gradient(40% 45% at 20% 10%, var(--ui-primary-soft) 0%, transparent 70%),
+		radial-gradient(38% 40% at 84% 16%, var(--ui-secondary-soft) 0%, transparent 76%),
+		radial-gradient(35% 35% at 50% 88%, color-mix(in srgb, var(--ui-primary) 22%, transparent) 0%, transparent 78%);
+	animation: aurora-drift 12s ease-in-out infinite alternate;
+}
+
+.premium-float {
+	animation: premium-float 5s ease-in-out infinite;
+}
+
+@keyframes aurora-drift {
+	0% { transform: translate3d(0, 0, 0) scale(1); }
+	100% { transform: translate3d(0, -12px, 0) scale(1.02); }
+}
+
+@keyframes premium-float {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-4px); }
+}
+
+.shimmer-skeleton {
+	position: relative;
+	overflow: hidden;
+	background: linear-gradient(90deg, rgba(30, 41, 59, 0.42) 0%, rgba(51, 65, 85, 0.5) 50%, rgba(30, 41, 59, 0.42) 100%);
+	background-size: 200% 100%;
+	animation: shimmer 1200ms linear infinite;
+	border-radius: 14px;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 120% 0;
+	}
+	100% {
+		background-position: -120% 0;
+	}
+}
+
+@keyframes edge-flow {
+	0% {
+		stroke-dashoffset: 16;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+.edge-flow {
+	animation: edge-flow 280ms linear infinite;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes scale-in {
+	from {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.anim-fade-in {
+	animation: fade-in 240ms ease-out;
+}
+
+.anim-slide-up {
+	animation: slide-up 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.anim-scale-in {
+	animation: scale-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.premium-hover {
+	transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.premium-hover:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 1ms !important;
+		scroll-behavior: auto !important;
+	}
+}

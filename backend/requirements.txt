@@ -1,0 +1,45 @@
+# ──── Core Framework ────
+fastapi==0.135.2
+uvicorn[standard]==0.42.0
+starlette==0.52.1
+python-multipart==0.0.22
+python-dotenv==1.2.2
+pydantic==2.12.5
+
+# ──── Database (Async PostgreSQL) ────
+sqlalchemy[asyncio]==2.0.48
+asyncpg==0.31.0
+aiosqlite==0.22.1
+
+# ──── Security & Authentication ────
+PyJWT==2.12.1
+passlib[bcrypt]==1.7.4
+cryptography==46.0.5
+boto3==1.42.74
+
+# ──── Machine Learning ────
+scikit-learn==1.8.0
+pandas==2.3.3
+numpy==2.4.1
+joblib==1.5.3
+
+# ──── Redis ────
+redis==5.0.1
+celery==5.6.2
+
+# ──── Rate Limiting ────
+fastapi-limiter==0.1.6
+
+# ──── Structured Logging ────
+structlog==25.5.0
+
+# ──── Monitoring ────
+prometheus-fastapi-instrumentator==7.1.0
+prometheus-client==0.24.1
+reportlab==4.4.4
+
+# ──── Webhooks (HTTP Client) ────
+httpx==0.28.1
+
+# ──── Testing ────
+pytest==9.0.2

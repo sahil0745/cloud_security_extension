@@ -1,0 +1,303 @@
+-26 23:27:22 [info     ] Models loaded successfully.
+{"endpoint": "/metrics", "event": "prometheus_metrics_enabled", "level": "info", "timestamp": "2026-03-26T17:57:22.651421Z"}
+.\venv\Scripts\python.exe : INFO:     
+Started server process [32664]
+At line:1 char:1
++ .\venv\Scripts\python.exe -m uvicorn 
+main:app --host 127.0.0.1 --port ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSp    
+ecified: (INFO:     Started ser    ver 
+process [32664]:String) [],     
+RemoteException
+    + FullyQualifiedErrorId : Nativ    
+eCommandError
+ 
+INFO:     Waiting for application startup.
+{"version": "2.0.0", "event": "application_startup", "level": "info", "timestamp": "2026-03-26T17:57:22.682214Z"}
+ERROR:    Traceback (most recent call 
+last):
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\st
+arlette\routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) 
+as maybe_state:
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\contextlib.py", 
+line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\fa
+stapi\routing.py", line 216, in 
+merged_lifespan
+    async with original_context(app) as 
+maybe_original_state:
+               ~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\contextlib.py", 
+line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\fa
+stapi\routing.py", line 216, in 
+merged_lifespan
+    async with original_context(app) as 
+maybe_original_state:
+               ~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\contextlib.py", 
+line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\main.py", line 59, in 
+app_lifespan
+    async with engine.begin() as conn:
+               ~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\contextlib.py", 
+line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\ext\asyncio\engine.py", line 
+1068, in begin
+    async with conn:
+               ^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\ext\asyncio\base.py", line 121, 
+in __aenter__
+    return await 
+self.start(is_ctxmanager=True)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\ext\asyncio\engine.py", line 
+275, in start
+    await 
+greenlet_spawn(self.sync_engine.connect)
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\util\_concurrency_py3k.py", line 
+201, in greenlet_spawn
+    result = 
+context.throw(*sys.exc_info())
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\engine\base.py", line 3293, in 
+connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\engine\base.py", line 143, in 
+__init__
+    self._dbapi_connection = 
+engine.raw_connection()
+                             
+~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\engine\base.py", line 3317, in 
+raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 448, in 
+connect
+    return 
+_ConnectionFairy._checkout(self)
+           
+~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 1272, in 
+_checkout
+    fairy = 
+_ConnectionRecord.checkout(pool)
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 712, in 
+checkout
+    rec = pool._do_get()
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\impl.py", line 177, in 
+_do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\util\langhelpers.py", line 121, 
+in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\impl.py", line 175, in 
+_do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 389, in 
+_create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 674, in 
+__init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 900, in 
+__connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\util\langhelpers.py", line 121, 
+in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\pool\base.py", line 896, in 
+__connect
+    self.dbapi_connection = connection = 
+pool._invoke_creator(self)
+                                         
+~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\engine\create.py", line 667, in 
+connect
+    return dialect.connect(*cargs_tup, 
+**cparams)
+           
+~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\engine\default.py", line 630, in 
+connect
+    return 
+self.loaded_dbapi.connect(*cargs, 
+**cparams)  # type: ignore[no-any-return] 
+ # NOQA: E501
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\dialects\postgresql\asyncpg.py", 
+line 955, in connect
+    await_only(creator_fn(*arg, **kw)),
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\util\_concurrency_py3k.py", line 
+132, in await_only
+    return 
+current.parent.switch(awaitable)  # type: 
+ignore[no-any-return,attr-defined] # 
+noqa: E501
+           
+~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\sq
+lalchemy\util\_concurrency_py3k.py", line 
+196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connection.py", line 2443, in 
+connect
+    return await connect_utils._connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<22 lines>...
+    )
+    ^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connect_utils.py", line 1249, in 
+_connect
+    raise last_error or exceptions.TargetS
+erverAttributeNotMatched(
+    ...<2 lines>...
+    )
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connect_utils.py", line 1218, in 
+_connect
+    conn = await _connect_addr(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connect_utils.py", line 1054, in 
+_connect_addr
+    return await __connect_addr(params, 
+True, *args)
+           
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connect_utils.py", line 1099, in 
+__connect_addr
+    tr, pr = await connector
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Downloads\remix_-g
+enerated\backend\venv\Lib\site-packages\as
+yncpg\connect_utils.py", line 969, in 
+_create_ssl_connection
+    tr, pr = await loop.create_connection(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        host, port)
+        ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\base_eve
+nts.py", line 1173, in create_connection
+    raise exceptions[0]
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\base_eve
+nts.py", line 1143, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\base_eve
+nts.py", line 1042, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\proactor
+_events.py", line 726, in sock_connect
+    return await 
+self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\windows_
+events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\Lenovo\AppData\Local\Pyth
+on\pythoncore-3.14-64\Lib\asyncio\windows_
+events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] 
+The remote computer refused the network 
+connection
+
+ERROR:    Application startup failed. 
+Exiting.

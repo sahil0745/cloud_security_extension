@@ -1,0 +1,93 @@
+[
+  {
+    "rule_id": "S3_PUBLIC_ACCESS",
+    "category": "Storage",
+    "description": "S3 bucket is publicly accessible",
+    "severity": "CRITICAL",
+    "remediation": "Disable public access block or remove public bucket policies."
+  },
+  {
+    "rule_id": "GCP_BUCKET_PUBLIC",
+    "category": "Storage",
+    "description": "GCP bucket is publicly accessible",
+    "severity": "CRITICAL",
+    "remediation": "Remove allUsers and allAuthenticatedUsers from IAM policy."
+  },
+  {
+    "rule_id": "AZURE_BLOB_PUBLIC",
+    "category": "Storage",
+    "description": "Azure blob is publicly accessible",
+    "severity": "CRITICAL",
+    "remediation": "Set public access level to Private."
+  },
+  {
+    "rule_id": "IAM_ADMIN_PRIVILEGES",
+    "category": "IAM",
+    "description": "Admin privileges detected",
+    "severity": "HIGH",
+    "remediation": "Apply least privilege principle."
+  },
+  {
+    "rule_id": "IAM_WILDCARD_PERMISSIONS",
+    "category": "IAM",
+    "description": "Wildcard permissions (*) detected",
+    "severity": "CRITICAL",
+    "remediation": "Specify exact actions and resources."
+  },
+  {
+    "rule_id": "IAM_NO_MFA",
+    "category": "IAM",
+    "description": "No MFA enabled",
+    "severity": "HIGH",
+    "remediation": "Enable MFA for all users."
+  },
+  {
+    "rule_id": "NETWORK_OPEN_PORTS",
+    "category": "Network",
+    "description": "Open ports (0.0.0.0/0) detected",
+    "severity": "HIGH",
+    "remediation": "Restrict access to specific IP ranges."
+  },
+  {
+    "rule_id": "NETWORK_EXPOSED_DB",
+    "category": "Network",
+    "description": "Exposed database detected",
+    "severity": "CRITICAL",
+    "remediation": "Move database to private subnet."
+  },
+  {
+    "rule_id": "NETWORK_WEAK_FIREWALL",
+    "category": "Network",
+    "description": "Weak firewall rules detected",
+    "severity": "HIGH",
+    "remediation": "Review and tighten firewall rules."
+  },
+  {
+    "rule_id": "ENCRYPTION_NO_AT_REST",
+    "category": "Encryption",
+    "description": "No encryption at rest",
+    "severity": "HIGH",
+    "remediation": "Enable default encryption for storage resources."
+  },
+  {
+    "rule_id": "ENCRYPTION_NO_HTTPS",
+    "category": "Encryption",
+    "description": "No HTTPS enforcement",
+    "severity": "MEDIUM",
+    "remediation": "Enforce HTTPS/SSL for all endpoints."
+  },
+  {
+    "rule_id": "DB_NO_ENCRYPTION",
+    "category": "Encryption",
+    "description": "Database strictly requires encryption at rest",
+    "severity": "CRITICAL",
+    "remediation": "Enable KMS/Customer Managed Key encryption for database."
+  },
+  {
+    "rule_id": "IAM_STALE_CREDENTIALS",
+    "category": "IAM",
+    "description": "Access keys older than 90 days",
+    "severity": "MEDIUM",
+    "remediation": "Rotate all overly aged access keys."
+  }
+]
